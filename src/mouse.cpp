@@ -18,7 +18,6 @@ Date: 16/2/19
 #include "pinAssignment.h"
 
 #include "PID.h"
-
 ////////////////////////////////////////////////////////////////////////////////
 //PID setup
 int baseSpeed = 100;
@@ -40,7 +39,6 @@ double motorChange = 0;
 void setup() {
   Serial.begin(9600);
 }
-
 ////////////////////////////////////////////////////////////////////////////////
 //overLine: function determines when travelling straight, and how long for
 int startStraight = 0;
