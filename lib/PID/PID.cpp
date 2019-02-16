@@ -21,23 +21,22 @@ PID::PID(double uInput, double uSetpoint, double uKp, double uKi, double uKd){
   errIntegral = 0;
 }
 
-  double PID::computePID(){
+double PID::computePID(){
 
+  double PIDsum;
   currentTime = millis();
   timeChange = currentTime - lastTime;
 
-
-  if(timeChange >= sampleTime){
+  if (timeChange >= sampleTime){
 
     error = setpoint - input;
     errIntegral += error * timeChange;
     errDeriv = (error - lastError) / timeChange;
 
-    double PIDsum = (kp * error) + (ki * errIntegral) + (kd * errDeriv);
+    PIDsum = (kp * error) + (ki * errIntegral) + (kd * errDeriv);
 
     lastError = error;
     lastTime = currentTime;
-
-  return PIDsum;
   }
+  return PIDsum;
 }
