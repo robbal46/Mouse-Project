@@ -32,42 +32,46 @@ double totalError;
 PID sensorPID(totalError, setpoint, 0, 0, 0);
 
 //Output of PID calculation, added/subtracted from motor speed
-double motorChange = 0;
+double motorChange;
 
 ////////////////////////////////////////////////////////////////////////////////
 //Setup: run once
 void setup() {
   totalError = 0;
+  motorChange = 0;
 
   Serial.begin(9600);
 }
 ////////////////////////////////////////////////////////////////////////////////
 //overLine: function determines when travelling straight, and how long for
-int overLine(){
+bool overLine(){
   unsigned long startStraight = 0;
-  unsigned long stopStraight = 0;
   bool straight = false;
 
   if (!straight && analogRead(lineSensPin) == HIGH){
     startStraight = millis();
     straight = true;
   }
-  else if (straight && analogRead(lineSensPin) == LOW){
-    stopStraight = millis();
+  else if (analogRead(lineSensPin) == LOW){
     straight = false;
   }
 
-  int straightTime = stopStraight - startStraight;
+  int straightTime = millis() - startStraight;
 
-  return straightTime;
+  if (straightTime >= 1000 && straight){
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 ////////////////////////////////////////////////////////////////////////////////
 //setMotorSpeeds: sets the speed of both left/right motors
 void setMotorSpeeds(){
-  double motorLeftSpeed;
-  double motorRightSpeed;
+  int motorLeftSpeed;
+  int motorRightSpeed;
 
-  if(overLine() >= 1000){
+  if(overLine()){
     motorLeftSpeed = boostSpeed - motorChange;
     motorRightSpeed = boostSpeed + motorChange;
   }

@@ -2,7 +2,7 @@
 
 #include "PID.h"
 
-PID::PID(double uInput, double uSetpoint, double uKp, double uKi, double uKd){
+PID::PID(int uInput, int uSetpoint, float uKp, float uKi, float uKd){
 
   //Set variables to user inputs
   input = uInput;

@@ -8,7 +8,7 @@ class PID{
   public:
 
     //PID object
-    PID(double, double, double, double, double);
+    PID(int, int, float, float, float);
 
     //Functions used in PID calculations
     double computePID();
@@ -17,13 +17,13 @@ class PID{
   private:
 
     //PID constants
-    double kp;
-    double ki;
-    double kd;
+    float kp;
+    float ki;
+    float kd;
 
     //Input and setpoint variables for calculations
-    double input;
-    double setpoint;
+    int input;
+    int setpoint;
 
     //Time variables
     unsigned long sampleTime;
