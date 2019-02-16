@@ -44,8 +44,8 @@ void setup() {
 ////////////////////////////////////////////////////////////////////////////////
 //overLine: function determines when travelling straight, and how long for
 int overLine(){
-  int startStraight = 0;
-  int stopStraight = 0;
+  unsigned long startStraight = 0;
+  unsigned long stopStraight = 0;
   bool straight = false;
 
   if (!straight && analogRead(lineSensPin) == HIGH){
