@@ -28,8 +28,8 @@ const double setpoint = 0;
 //Result of adding both inductor inputs
 double totalError;
 
-//Create PID object   (input, setpoint, kp, ki, kd)
-PID sensorPID(totalError, setpoint, 0, 0, 0);
+//Create PID object   (input, setpoint, kp, ki, kd, sampleTime)
+PID sensorPID(totalError, setpoint, 0, 0, 0, 100);
 
 //Output of PID calculation, added/subtracted from motor speed
 double motorChange;

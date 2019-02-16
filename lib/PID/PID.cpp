@@ -2,19 +2,17 @@
 
 #include "PID.h"
 
-PID::PID(int uInput, int uSetpoint, float uKp, float uKi, float uKd){
+PID::PID(int uInput, int uSetpoint, float uKp, float uKi, float uKd, int uSampleTime){
 
   //Set variables to user inputs
   input = uInput;
   setpoint = uSetpoint;
+  sampleTime = uSampleTime;
 
   //PID constants
   kp = uKp;
   ki = uKi;
   kd = uKd;
-
-  //PID sampling time (ms)
-  sampleTime = 100;
 
   lastTime = millis() - sampleTime;
   lastError = 0;

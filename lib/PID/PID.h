@@ -8,7 +8,7 @@ class PID{
   public:
 
     //PID object
-    PID(int, int, float, float, float);
+    PID(int, int, float, float, float, int);
 
     //Functions used in PID calculations
     double computePID();
@@ -26,10 +26,10 @@ class PID{
     int setpoint;
 
     //Time variables
-    unsigned long sampleTime;
     unsigned long lastTime;
     unsigned long currentTime;
     unsigned long timeChange;
+    int sampleTime;
 
     //Error variables used for calculation
     double error;
