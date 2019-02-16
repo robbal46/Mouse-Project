@@ -4,14 +4,16 @@
 
 PID::PID(double uInput, double uSetpoint, double uKp, double uKi, double uKd){
 
+  //Set variables to user inputs
   input = uInput;
   setpoint = uSetpoint;
 
+  //PID constants
   kp = uKp;
   ki = uKi;
   kd = uKd;
 
-  //Set PID sampling time to 100ms
+  //PID sampling time (ms)
   sampleTime = 100;
 
   lastTime = millis() - sampleTime;
@@ -19,7 +21,7 @@ PID::PID(double uInput, double uSetpoint, double uKp, double uKi, double uKd){
   errIntegral = 0;
 }
 
-double PID::computePID(){
+  double PID::computePID(){
 
   currentTime = millis();
   timeChange = currentTime - lastTime;
