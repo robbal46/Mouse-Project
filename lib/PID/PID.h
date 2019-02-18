@@ -1,3 +1,6 @@
+//PID.h: PID library
+
+//Include guards
 #ifndef PID_h
 #define PID_h
 
@@ -8,10 +11,14 @@ class PID{
   public:
 
     //PID object
-    PID(int, int, float, float, float, int);
+    PID(int, int, float, float, float);
 
     //Functions used in PID calculations
     double computePID();
+
+    void setConstants(float, float, float);
+
+    void setSampleTime(int);
 
   //Variables accesible by class functions
   private:

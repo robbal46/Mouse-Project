@@ -9,7 +9,7 @@ increased.
 PID control is used to control the robots positioning (PID.h library)
 
 Author: Alex Robb, University of Bath
-Date: 16/2/19
+Date: 17/2/19
 */
 ////////////////////////////////////////////////////////////////////////////////
 //Includes and libraries
@@ -29,7 +29,7 @@ const double setpoint = 0;
 double totalError;
 
 //Create PID object   (input, setpoint, kp, ki, kd, sampleTime)
-PID sensorPID(totalError, setpoint, 1, 0, 0, 100);
+PID sensorPID(totalError, setpoint, 1, 0, 0);
 
 //Output of PID calculation, added/subtracted from motor speed
 double motorChange;
